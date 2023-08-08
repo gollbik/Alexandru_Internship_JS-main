@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit";
 
 export class NextPage extends LitElement {
-  static styles = css``; // Stilurile specifice componentei NextPage
+  static styles = css``;
 
   static get properties() {
     return {

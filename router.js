@@ -1,8 +1,8 @@
 import "/pages/home.js";
 import "/pages/pokemon.js";
 import "/pages/not-found.js";
-import "/pages/NextPage.js"; // Adaugă import pentru NextPage.js
-import "/pages/PrevPage.js"; // Adaugă import pentru PrevPage.js
+import "/pages/NextPage.js";
+import "/pages/PrevPage.js";
 
 const WrappedElement = (element) => {
   document.getElementById("app").innerHTML = element;
@@ -17,10 +17,10 @@ const routes = {
     return WrappedElement(`<pokemon-page id=${id}></pokemon-page>`);
   },
   "/next/:page": function (page) {
-    return WrappedElement(`<next-page page=${page}></next-page>`); // Utilizează NextPage pentru ruta "/next/:page"
+    return WrappedElement(`<next-page page=${page}></next-page>`);
   },
   "/prev/:page": function (page) {
-    return WrappedElement(`<prev-page page=${page}></prev-page>`); // Utilizează PrevPage pentru ruta "/prev/:page"
+    return WrappedElement(`<prev-page page=${page}></prev-page>`);
   },
   NotFound() {
     return WrappedElement("<not-found-page></not-found-page>");
@@ -56,7 +56,7 @@ function router() {
 
 export function pushState(page, data) {
   history.pushState({ ...data }, "string", `/${page}`);
-  router(); // După ce ai apelat pushState, redirecționează utilizatorul către pagina corespunzătoare
+  router();
 }
 
 window.addEventListener("load", router);

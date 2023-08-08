@@ -5,7 +5,6 @@ export let offset = 0;
 export let currentPage = 1;
 export const totalPages = Math.ceil(200 / limit);
 
-// Obiectul cu rutele API
 export const FetchPokemons = {
   getPokemonList: async (page) => {
     const offset = (page - 1) * limit;
@@ -29,13 +28,12 @@ export const FetchPokemons = {
       const pokeman = await res.json();
       pokeman.image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
 
-      // Function to get basic Pokemon stats
       const pokeStats = async () => {
         const statsRes = await fetch(pokeman.stats[0].stat.url);
-        pokeman.hp = pokeman.stats[0].base_stat; // HP
-        pokeman.attack = pokeman.stats[1].base_stat; // Attack
-        pokeman.defense = pokeman.stats[2].base_stat; // Defense
-        pokeman.speed = pokeman.stats[5].base_stat; // Speed
+        pokeman.hp = pokeman.stats[0].base_stat;
+        pokeman.attack = pokeman.stats[1].base_stat;
+        pokeman.defense = pokeman.stats[2].base_stat;
+        pokeman.speed = pokeman.stats[5].base_stat;
       };
 
       const abilitiesEffectPromises = pokeman.abilities.map(
@@ -57,7 +55,6 @@ export const FetchPokemons = {
       const abilitiesWithEffect = await Promise.all(abilitiesEffectPromises);
       pokeman.abilities = abilitiesWithEffect;
 
-      // Get Pokemon stats
       await pokeStats();
 
       pokeCache[id] = pokeman;
@@ -98,5 +95,4 @@ export const displayPopup = (pokeman) => {
   pokedex.innerHTML = htmlString + pokedex.innerHTML;
 };
 
-// Fetch the first page of Pokémon
 fetchPokemon(currentPage);

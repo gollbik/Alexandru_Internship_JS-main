@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit";
 
 export class PrevPage extends LitElement {
-  static styles = css``; // Stilurile specifice componentei PrevPage
+  static styles = css``;
 
   static get properties() {
     return {

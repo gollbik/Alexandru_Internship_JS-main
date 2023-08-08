@@ -112,8 +112,7 @@ button:hover{
     cursor: pointer;
 }
 
-/* Add your custom styles for the Pokémon list and footer here */
-/* For simplicity, we'll just use a basic styling for the pagination arrows */
+
 
 #footer {
     display: flex;
@@ -211,23 +210,20 @@ button:hover{
     list-style: none;
     padding: 0;
     margin: 40px ;
-    display: flex; /* Afișează elementele într-o coloană */
-    flex-direction: column; /* Așază elementele într-o coloană */
+    display: flex;
+    flex-direction: column; 
   }
   
-  /* Stilurile pentru fiecare element din lista cu statistici */
   .stats-list li {
     display: flex;
     align-items: center;
     margin-bottom: 5px;
   }
   
-  /* Stilurile pentru numele statisticilor */
   .stats-list li x-large {
     margin-right: 50px;
   }
   
-  /* Stilurile pentru bara de progres */
   progress {
     margin-top: 10px;
     display: flex;
@@ -236,15 +232,15 @@ button:hover{
     border: none;
     border-radius: 10px;
     border-radius: 10px;
-    overflow: hidden; /* Ascunde valorile implicite ale barei de progres */
-    position: relative; /* Permite poziționarea absolută a textului */
-    margin: 10px 0; /* Spațiu între barele de progres */
+    overflow: hidden; 
+    position: relative; 
+    margin: 10px 0; 
     background-color: black;
     align-items: flex-start;
   }
   
   progress::-webkit-progress-value {
-    background-color: black; /* Culoarea de umplere a barei de progres */
+    background-color: black; 
     border-radius: 10px;
   }
 
@@ -252,7 +248,7 @@ button:hover{
   
   
   .interior{
-    overflow: hidden; /* Ascunde conținutul care depășește dimensiunile cardului */
+    overflow: hidden; 
 padding: 20px;
 
   }

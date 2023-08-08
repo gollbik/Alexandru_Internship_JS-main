@@ -41,7 +41,7 @@ export class HomePage extends LitElement {
 
   handlePrevPage() {
     if (this.page <= 1) {
-      this.page = 1; // sau înlocuiți cu numărul maxim de pagini pe care le aveți
+      this.page = 1;
     } else {
       this.page--;
     }
