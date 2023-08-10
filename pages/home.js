@@ -51,25 +51,31 @@ export class HomePage extends LitElement {
 
   render() {
     return html`
-      <h1>Pokemons</h1>
-      <ol id="pokedex">
-        ${map(
-          this.pokemons || [],
-          ({ id, image, name }) => html`<li
-            class="card"
-            style="background-color: ${getColorForPokemon(
-              id - 1 + this.offset
-            )};"
-            @click="${() => pushState(`./pokemon/${id}`, { page: this.page })}"
-          >
-            <img class="card-image" src="${image}" />
-            <h2 class="card-title">${id}. ${name}</h2>
-          </li>`
-        )}
-      </ol>
-      <div id="footer">
-        <button @click="${this.handlePrevPage}"><</button>
-        <button @click="${this.handleNextPage}">></button>
+      <div>
+        <div class="navbar">
+          <h1>Pokemons</h1>
+        </div>
+
+        <ol id="pokedex">
+          ${map(
+            this.pokemons || [],
+            ({ id, image, name }) => html`<li
+              class="card"
+              style="background-color: ${getColorForPokemon(
+                id - 1 + this.offset
+              )};"
+              @click="${() =>
+                pushState(`./pokemon/${id}`, { page: this.page })}"
+            >
+              <img class="card-image" src="${image}" />
+              <h2 class="card-title">${name}</h2>
+            </li>`
+          )}
+        </ol>
+        <div id="footer">
+          <button @click="${this.handlePrevPage}"><</button>
+          <button @click="${this.handleNextPage}">></button>
+        </div>
       </div>
     `;
   }
