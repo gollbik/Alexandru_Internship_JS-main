@@ -1,8 +1,6 @@
 import { LitElement, html, css } from "lit";
 
 export class PrevPage extends LitElement {
-  static styles = css``;
-
   static get properties() {
     return {
       page: { type: Number },

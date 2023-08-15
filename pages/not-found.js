@@ -1,4 +1,4 @@
-import styles from "/components/app.css";
+import styles from "../styles/app.css?inline";
 import { LitElement, html, css } from "lit";
 
 export class NotFound extends LitElement {

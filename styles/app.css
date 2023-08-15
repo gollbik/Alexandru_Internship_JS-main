@@ -1,0 +1,297 @@
+body {
+  background-color: black;
+  margin: 0;
+  font-family: rubik;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.card {
+height: 450px;
+  list-style: none;
+ background-color: white;
+ color: black;
+ text-align: center;
+border-radius: 20px;
+}
+.card:hover{
+  animation: bounce 0.5s linear;
+  cursor: pointer;
+}
+
+
+.card2 {
+display: inline-block;
+width: 600px;
+height: 750px;
+color: black;
+text-align: center;
+border-radius: 20px;
+
+}
+
+
+
+.card-title{
+  text-transform: uppercase;
+  font-size: 30px;
+  font-weight: normal;
+  color: black;
+
+}
+
+
+.card-id{
+  text-transform: uppercase;
+  font-size: 35px;
+  font-weight: normal;
+  color: black;
+  text-align: left;
+padding-left: 20px;
+padding-top: 15px;
+
+}
+
+
+
+.card-subtitle{
+  font-weight: lighter;
+  margin-top: 5px;
+
+}
+.card-image {
+  margin-top: 20px;
+  height: 55%;
+}
+
+.card-image:hover {
+  animation: bounceEffect 0.5s forwards infinite; /* Adăugați "forwards" pentru a menține starea finală a animației */
+}
+
+@keyframes bounceEffect {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+
+
+
+.card-image2{
+  height: 40%;
+
+}
+
+a {
+  text-decoration: none;
+}
+
+#pokedex {
+  padding-inline-start: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-gap: 30px;
+  color: white;
+}
+
+
+
+.container{
+  padding: 40px;
+  margin: 0 auto;
+}
+
+h1{ 
+  color: white;
+  text-align: center;
+  font-size: 54px;
+}
+
+
+.popup {    
+  display: flex;
+ justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+}
+
+#closeBtn{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+button{
+  background-color:black;
+  padding: 20px 40px;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  font-size: large;
+  box-shadow: 0px 3px 5px 3px  ;
+
+}   
+
+
+button:hover{
+  cursor: pointer;
+}
+
+
+
+#footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  font-size: x-large;
+  color: black;
+}
+
+#footer button {
+  padding: 20px 40px;
+  margin: 0 20px;
+  background: white;
+  color: darkblue;
+}
+
+
+
+
+h3 {
+  text-align: left;
+  text-transform: uppercase;
+  font-weight: normal;
+  color: darkblue;
+}
+
+
+.abilities{
+  text-align: left;
+}
+
+
+
+.card-title2{
+  padding: 25px;
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 30px;
+  font-weight: normal;
+  color: white;
+  
+}
+
+
+.container2 {
+  background-color: #fff; 
+  border-radius: 50px; 
+  padding: 20px;
+   
+  
+}
+
+
+.space{
+  margin-bottom: 30px;
+}
+
+ul{
+  padding: 20px;
+  list-style-type: none;
+}
+
+
+
+.container3 {
+  display: inline-block;
+  margin: 10px;
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  padding: 10px;
+  width: 120px ;
+}
+
+
+
+
+
+progress::before {
+  content: attr(value);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+    
+
+.stats-list {
+  list-style: none;
+  padding: 0;
+  margin: 40px ;
+  display: flex;
+  flex-direction: column; 
+}
+
+.stats-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.stats-list li x-large {
+  margin-right: 50px;
+}
+
+progress {
+  margin-top: 10px;
+  display: flex;
+  width: 85%;
+  height: 20px;
+  border: none;
+  border-radius: 10px;
+  border-radius: 10px;
+  overflow: hidden; 
+  position: relative; 
+  margin: 10px 0; 
+  background-color: black;
+  align-items: flex-start;
+}
+
+progress::-webkit-progress-value {
+  background-color: black; 
+  border-radius: 10px;
+}
+
+
+
+
+.interior{
+  overflow: hidden; 
+padding: 20px;
+
+}
+  
+.navbar{
+text-transform: uppercase;
+margin-top: 10px;
+padding: 50px;
+margin-bottom: 170px;
+border-radius: 20px;
+background-color:black;
+  padding: 20px 40px;
+  border: none;
+  color: white;
+  font-size: large;
+  box-shadow: 0px 3px 5px 3px  ;
+}

@@ -1,8 +1,10 @@
-import styles from "/components/app.css";
+import styles from "../styles/app.css?inline";
 import { LitElement, html, css } from "lit";
-import { FetchPokemons, getColorForPokemon } from "/components/app";
+import { FetchPokemons, getColorForPokemon } from "/api/app";
 import { unsafeCSS } from "lit";
 import { pushState } from "../router";
+import { PokemonStats } from "../components/PokemonStats.js";
+
 export class Pokemon extends LitElement {
   static styles = css`
     ${unsafeCSS(styles)}
@@ -20,12 +22,14 @@ export class Pokemon extends LitElement {
   }
 
   async fetchPokemon() {
-    this.pokemon = await FetchPokemons.getPokemonDetails(this.id);
+    this.pokemon = await FetchPokemons.getPokemonDetails(
+      this.id ? this.id : false
+    );
     const stats = await FetchPokemons.pokeStats(this.id);
 
-    this.pokemon = { ...this.pokemon, ...stats };
+    console.log("hello");
 
-    console.log(this.pokemon);
+    this.pokemon = { ...this.pokemon, ...stats };
   }
 
   handleBack() {
@@ -96,29 +100,12 @@ export class Pokemon extends LitElement {
                   </div>
                 `
               : html``}
-            <div class="interior">
-              <ul class="stats-list">
-                <li class="stats">
-                  <x-large class="large">HP: </x-large>
-                  <progress value="${this.pokemon.hp}" max="120"></progress>
-                </li>
-                <li class="stats">
-                  <x-large>ATK: </x-large>
-                  <progress value="${this.pokemon.attack}" max="120"></progress>
-                </li>
-                <li class="stats">
-                  <x-large>DEF: </x-large>
-                  <progress
-                    value="${this.pokemon.defense}"
-                    max="120"
-                  ></progress>
-                </li>
-                <li class="stats">
-                  <x-large>SPD:</x-large>
-                  <progress value="${this.pokemon.speed}" max="120"></progress>
-                </li>
-              </ul>
-            </div>
+            <pokemon-stats
+              .hp=${this.pokemon.hp}
+              .attack=${this.pokemon.attack}
+              .defense=${this.pokemon.defense}
+              .speed=${this.pokemon.speed}
+            ></pokemon-stats>
           </div>
         </div>
         <div class="card2">

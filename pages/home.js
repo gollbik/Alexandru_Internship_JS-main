@@ -1,52 +1,50 @@
-import styles from "/components/app.css";
 import { LitElement, html, css } from "lit";
 import { map } from "lit/directives/map.js";
-import { FetchPokemons, getColorForPokemon } from "../components/app";
+
+import { FetchPokemons } from "../api/app";
 import { pushState } from "../router.js";
+import { PokemonCard } from "../components/PokemonCard";
+import styles from "../styles/app.css?inline";
+
 export class HomePage extends LitElement {
   static styles = css([styles]);
-
+  static properties = {
+    pokemons: { state: true },
+    page: { state: true },
+    offset: { state: true },
+  };
   constructor() {
     super();
     this.offset = 0;
     this.page = 1;
+    this.pokemons = [];
   }
 
-  static get properties() {
-    return {
-      pokemons: Array,
-      offset: Number,
-      page: Number,
-    };
-  }
-
-  connectedCallback() {
+  async connectedCallback() {
     super.connectedCallback();
 
-    this.fetchPokemons(history.state?.page);
+    this.pokemons = await FetchPokemons.getPokemonList(
+      history.state?.page ? history.state.page : this.page
+    );
   }
 
-  async fetchPokemons(page) {
-    this.pokemons = await FetchPokemons.getPokemonList(page || this.page);
-  }
-
-  handleNextPage() {
+  async handleNextPage() {
     if ((this.page + 1) * 25 > 200) {
       this.page = 1;
     } else {
       this.page++;
     }
-    this.fetchPokemons();
+    this.pokemons = await FetchPokemons.getPokemonList(this.page);
   }
 
-  handlePrevPage() {
+  async handlePrevPage() {
     if (this.page <= 1) {
       this.page = 1;
     } else {
       this.page--;
     }
 
-    this.fetchPokemons();
+    this.pokemons = await FetchPokemons.getPokemonList(this.page);
   }
 
   render() {
@@ -59,17 +57,15 @@ export class HomePage extends LitElement {
         <ol id="pokedex">
           ${map(
             this.pokemons || [],
-            ({ id, image, name }) => html`<li
-              class="card"
-              style="background-color: ${getColorForPokemon(
-                id - 1 + this.offset
-              )};"
-              @click="${() =>
-                pushState(`./pokemon/${id}`, { page: this.page })}"
-            >
-              <img class="card-image" src="${image}" />
-              <h2 class="card-title">${name}</h2>
-            </li>`
+            ({ id, image, name }) => html`
+              <pokemon-card
+                .id="${id}"
+                .image="${image}"
+                .name="${name}"
+                .page="${this.page}"
+                .offset="${this.offset}"
+              ></pokemon-card>
+            `
           )}
         </ol>
         <div id="footer">

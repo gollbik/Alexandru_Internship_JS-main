@@ -1,8 +1,6 @@
 import "/pages/home.js";
 import "/pages/pokemon.js";
 import "/pages/not-found.js";
-import "/pages/NextPage.js";
-import "/pages/PrevPage.js";
 
 const WrappedElement = (element) => {
   document.getElementById("app").innerHTML = element;
