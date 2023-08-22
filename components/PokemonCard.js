@@ -1,14 +1,10 @@
 import { LitElement, html, css } from "lit";
 import { pushState } from "../router.js";
 import { getColorForPokemon } from "../api/app";
-import styles from "../styles/app.css";
+import styles from "../styles/app.css?inline";
 
 export class PokemonCard extends LitElement {
   static styles = css([styles]);
-
-  constructor() {
-    super();
-  }
 
   static get properties() {
     return {
